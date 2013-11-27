@@ -1,0 +1,32 @@
+Welcome to ifChess, coded by Joel Dettweiler, (c) 2013
+ifChess is coded in Python 3.3.2. To run it, cd to the ifChess directory and type
+"python3 ifChess.py"
+
+Capabilities of ifChess:
+
+Original Chess:
+Receive algebraic notation commands
+Keep track of moves
+Print board
+Give proper error messages
+Keep track of pieces lost
+
+Chess 2:
+Midline rule
+Regular ruleset
+Nemesis ruleset
+Empowered ruleset
+
+Under development:
+Reaper ruleset
+Warrior Kings ruleset
+Animals ruleset
+Dueling system
+Input sanitization
+
+
+Possible future project addons:
+Network games
+GUI
+
+Send comments, questions, or bugs found to dettonator11@gmail.com.
