@@ -2,7 +2,7 @@ from rulesets import * # currently imports reg(regular chess) and nem(nemesis)
 import g
 import os
 
-armies = [reg,nem,emp]
+armies = [reg,nem,emp,rpr]
 g.rules = [reg,reg]
 CLS_CMD = g.CLS_CMD
 fileRead = g.fileRead

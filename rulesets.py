@@ -17,7 +17,7 @@ class reg:
 		
 		coords = reg.findPiece(self, piece, orig, r, f) # locate piece, since algebraic notation doesn't always specify exact location
 
-		if not coords:
+		if not coords: # findPiece returns false if there are no possible pieces
 			return "Illegal move"
 		else:
 			orig = coords[-1]
@@ -234,6 +234,8 @@ class reg:
 			return False
 		if (g.rules[abs(player - 1)] == nem and g.chessBoard[r][f] == str(abs(player - 1)) + "Q" 
 			and not g.chessBoard[startr][startf][:2] == c + "K"): # if the piece under attack is a Nemesis and the attacker is not a King
+			return False
+		if g.rules[abs(player - 1)] == rpr and g.chessBoard[r][f][:2] == str(abs(player - 1)) + "R": # if piece under attack is Reaper rook
 			return False
 
 		if g.chessBoard[startr][startf][:2] == c + "K": # if King
@@ -470,4 +472,49 @@ class emp:
 		return reg.threatens(startr, startf, r, f)
 
 ############################ END OF EMPOWERED RULESET ################################
+
+
+########################## THIS IS THE REAPER RULESET ################################
+
+class rpr:
+
+	def move(self, orig, dest, attack):
+		
+		return reg.move(self, orig, dest, attack)
+
+
+	def castle(self, q):
+
+		return "Only Classic Army can castle."
+
+	
+	def victory(self):
+	
+		return reg.victory(self)
+
+
+	def threatens(startr, startf, r, f):
+		
+		player = g.player
+		c = str(player)
+
+		if startr == r and startf == f:
+			return False
+
+		if g.chessBoard[startr][startf] == c + "Q": # if Queen
+
+				# Queen can capture anywhere but back row, anyone but King
+			if (not r == 7 - (7 * player) and not g.chessBoard[r][f][:2] == str(abs(player - 1)) + "K"):
+				return True
+			return False
+		
+		elif g.chessBoard[startr][startf][:2] == c + "R": # if Rook
+
+			if g.chessBoard[r][f] == " ": # Rooks can't capture or be captured, but can move to any open spot
+				return True
+			return False
+		
+		return reg.threatens(startr, startf, r, f)
+
+############################### END OF REAPER RULESET ################################
 
